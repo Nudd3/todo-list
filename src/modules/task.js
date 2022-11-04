@@ -4,6 +4,7 @@ export default class Task {
     this.description = description;
     this.priority = priority;
     this.dueDate = dueDate;
+    this.complete = false;
   }
 
   getTitle() {
@@ -24,6 +25,10 @@ export default class Task {
 
   getDueDate(){
     return this.dueDate;
+  }
+
+  setComplete(){
+    this.complete = true;
   }
 
   testFunction(){

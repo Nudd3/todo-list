@@ -19,6 +19,7 @@ body {
   
 }
 
+/* HEADER */
 .header {
   grid-row: 1 / 2;
   display: flex;
@@ -33,14 +34,35 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 15px 0;
 }
 
-button {
+.logo-section {
+  gap: 20px;
+  font-weight: bold;
+}
+
+/* NAV (LEFT SIDE) */
+
+.new-list-section {
+  padding-right: 15px;
+}
+
+#addListButton {
   border: none;
-  border-radius: 8px;
-  background-color: #4fc459;
-  margin: 15px 25px;
-  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: #78df80;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.5rem;
+}
+
+#addListButton:hover {
+  cursor:pointer;
+  background-color: #8aea92;
+
 }
 
 .main {
@@ -52,12 +74,11 @@ button {
   background-color: #eeeeee;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  width: 250px;
 }
 
 .section-title {
   padding: 10px 0 10px 10px;
-  border-bottom: 1px solid red;
 }
 
 .lists {
@@ -68,9 +89,15 @@ button {
 }
 
 .list {
-  border: 3px solid #989C94;
-  padding: 10px 25px;
+  padding: 10px 15px;
   background-color: #BDC2BF;
+  border-bottom: 2px solid #9a9f9c;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.list:last-child {
+  border-bottom: none;
 }
 
 .list:hover {
@@ -82,7 +109,7 @@ button {
 }
 
 .list-tasks {
-  padding: 25px;
+  padding: 0 25px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -92,13 +119,44 @@ button {
 .task {
   width: 100%;
   height: 50px;
-  background-color: #D5C7BC;
+  background-color: #d5dbd7;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 25px;
   border: none;
+}
+
+.task:hover {
+  background-color: #d1d1d1;
 }
 
 .task-title {
   font-size: 1.5rem;
+  padding-left: 25px;
+}
+
+.task-right {
+  display: flex;
+  gap: 25px;
+  padding-right: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-list-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+#newList {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  height: 50px;
+  font-size: 15px;
+  padding-left: 15px;
 }
