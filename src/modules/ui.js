@@ -1,10 +1,13 @@
 import Task from './task.js';
 import TodoList from './todo-list';
+import Storage from './storage.js';
 export default class UI {
-  todoLists = [];
-
+  // Display Lists
+  // Add Lists
+  // Remove Lists
+  // Display Tasks
+  // Remove Tasks
   static loadHomepage() {
-    //loadProjects();
     UI.loadShowCase();
     UI.addListButton();
   }
@@ -21,12 +24,18 @@ export default class UI {
     todoListDiv.classList.add('list');
     const title = todoList.getName();
     todoListDiv.textContent = title;
+
+    // Should this happen here? 
+    // Should createTodoList just add a list to the 
+    // storage and then display them through the storage?
     todoListDiv.addEventListener('click', () => {
       UI.displayTodoContent(todoList);
     });
     return todoListDiv;
   }
 
+  // Should just loop through some storage and show 
+  // like: storage.forEach(todoList, displayTodoContent(todoList))
   static displayTodoContent(todoList) {
     UI.clearTasksSection();
     const lists = document.getElementById('listTasks');
@@ -53,6 +62,7 @@ export default class UI {
     removeTask.forEach((btn) => {
       btn.addEventListener('click', () => {
         console.log('remove');
+        btn.parentElement.parentElement.remove(); // WORKS!
       });
     });
   }
@@ -60,29 +70,35 @@ export default class UI {
   static addListButton() {
     const addListBtn = document.getElementById('addListButton');
     addListBtn.addEventListener('click', () => {
+      this.clearTasksSection();
       const lists = document.getElementById('lists');
+      /** Most Likely not necessary
       while (lists.firstChild) {
         lists.removeChild(lists.firstChild);
       }
+      */
+
       lists.innerHTML = `
       <div id="newList">
-        <input type="textfield" placeholder="TITLE">
-        <input type="textfield" placeholder="DESCRIPTION">
+        <input type="textfield" id="title" name="title" placeholder="TITLE">
+        <input type="textfield" id="description" name="description" placeholder="DESCRIPTION">
         <select id="priority" name="priority">
           <option value="" disabled selected>PRIORITY</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
-        <button class="submit-list-button" id="submitListButton">Add List</button>
+        <div class="buttons">
+          <button class="submit-list-button" id="submitListButton">Add List</button>
+          <button class="cancel-list-button" id="cancelListButton">Cancel</button>
+        </div>
       </div>
       `;
 
       const submitListButton = document.getElementById('submitListButton');
       submitListButton.addEventListener('click', () => {
-        alert('hello')
-      })
-
+        //this.storage.printStorage();
+      });
     });
   }
 
@@ -115,5 +131,10 @@ export default class UI {
 
     lists.appendChild(UI.createTodoList(todoList));
     lists.appendChild(UI.createTodoList(todoList2));
+
+    let storage = new Storage();
+    storage.storeList(todoList);
+    storage.storeList(todoList2);
+    storage.printStorage();
   }
 }

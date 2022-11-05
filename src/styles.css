@@ -15,11 +15,11 @@ body {
   background-color: blue;
  
   display: grid;
-  grid-template-rows: 1fr 6fr;
+  grid-template-rows: 1fr 4fr;
   
 }
 
-/* HEADER */
+/* HEADER header, logo-section, title, */
 .header {
   grid-row: 1 / 2;
   display: flex;
@@ -30,41 +30,16 @@ body {
   padding: 0 25px;
 }
 
-.logo-section, .new-list-section {
+.header-title-section{
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 15px 0;
-}
-
-.logo-section {
   gap: 20px;
   font-weight: bold;
 }
 
-/* NAV (LEFT SIDE) */
-
-.new-list-section {
-  padding-right: 15px;
-}
-
-#addListButton {
-  border: none;
-  border-radius: 50%;
-  background-color: #78df80;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.5rem;
-}
-
-#addListButton:hover {
-  cursor:pointer;
-  background-color: #8aea92;
-
-}
-
+/* NAV (LEFT SIDE) main, nav, section-title, add-list, new-list-section, addListButton, lists*/
 .main {
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -74,7 +49,31 @@ body {
   background-color: #eeeeee;
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 100%;
+  min-width: 100%;
+}
+
+.add-list-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#addListButton {
+  border: none;
+  background-color: #78df80;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.5rem;
+  padding: 5px;
+  margin-right: 15px;
+}
+
+#addListButton:hover {
+  cursor:pointer;
+  background-color: #8aea92;
+
 }
 
 .section-title {
@@ -103,6 +102,8 @@ body {
 .list:hover {
   background-color: #9f9f9f;
 }
+
+/* Main Content (Right Side) */
 
 .content {
   background-color: #feffff;
@@ -143,20 +144,54 @@ body {
   justify-content: center;
 }
 
-.add-list-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-}
 
+/* Add new list menu */
 #newList {
   display: flex;
   flex-direction: column;
 }
 
-input {
-  height: 50px;
+input[name=title] {
   font-size: 15px;
-  padding-left: 15px;
+  padding: 5px 0 5px 15px;
+  border: none;
+}
+input[name=title]:active {
+  border: none;
+  appearance: none;
+}
+
+input[name=title]:focus {
+  border: none;
+  appearance: none;
+  outline: none;
+}
+
+input[name=description]{
+  font-size: 15px;
+  border: none;
+  padding: 25px 0 25px 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+select{
+  appearance: none;
+  padding: 5px 0 5px 15px;
+  font-size: 15px;
+  border:none;
+  color: rgb(160, 160, 160);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.submit-list-button,
+.cancel-list-button {
+  margin-top: 15px;
+  padding: 10px 15px;
 }

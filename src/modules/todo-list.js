@@ -31,4 +31,13 @@ export default class TodoList {
   nrOfTasks(){
     return this.tasks.length;
   }
+
+  toString() {
+    const output = '';
+    this.tasks.forEach(task => {
+      output += `Title: ${task.getTitle()}, `;
+      output += `Prio: ${task.getPriority()}, \n`;
+    })
+    return output;
+  }
 }
