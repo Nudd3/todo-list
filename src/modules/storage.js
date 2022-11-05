@@ -9,9 +9,14 @@ export default class Storage {
   }
 
   deleteList(todoList) {
-
+    
   }
 
+  getLists() {
+    return this.storage;
+  }
+
+  // testing purposes
   printStorage() {
     this.storage.forEach(element => {
       console.log(element);

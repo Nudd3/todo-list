@@ -2,24 +2,23 @@ import Task from './task.js';
 import TodoList from './todo-list';
 import Storage from './storage.js';
 export default class UI {
+  constructor() {
+    this.storage = new Storage();
+  }
   // Display Lists
   // Add Lists
   // Remove Lists
   // Display Tasks
   // Remove Tasks
-  static loadHomepage() {
-    UI.loadShowCase();
-    UI.addListButton();
+  load() {
+    this.createExamples();
+    //UI.addListButton();
+    this.displayTodoContent();
   }
 
   loadProjects() {}
 
-  static getTodoContent() {
-    // Read the inputs from the page and use them to create a TodoList
-    // Then call createTodo with the new TodoList
-  }
-
-  static createTodoList(todoList) {
+  static createTodoList() {
     const todoListDiv = document.createElement('div');
     todoListDiv.classList.add('list');
     const title = todoList.getName();
@@ -29,14 +28,64 @@ export default class UI {
     // Should createTodoList just add a list to the 
     // storage and then display them through the storage?
     todoListDiv.addEventListener('click', () => {
-      UI.displayTodoContent(todoList);
+      //UI.displayTodoContent(todoList);
     });
     return todoListDiv;
   }
 
+  static addListButton() {
+    const addListBtn = document.getElementById('addListButton');
+    addListBtn.addEventListener('click', () => {
+      this.clearTasksSection();
+      const lists = document.getElementById('lists');
+      /** Most Likely not necessary
+      while (lists.firstChild) {
+        lists.removeChild(lists.firstChild);
+      }
+      */
+
+      lists.innerHTML = `
+      <div id="newList">
+        <input type="textfield" id="title" name="title" placeholder="TITLE">
+        <input type="textfield" id="description" name="description" placeholder="DESCRIPTION">
+        <select id="priority" name="priority">
+          <option value="" disabled selected>PRIORITY</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <label for="dueDate">Due Date:
+        <input type="date" name="dueDate", id="dueDate">
+        </label>
+        <div class="buttons">
+          <button class="submit-list-button" id="submitListButton">Add List</button>
+          <button class="cancel-list-button" id="cancelListButton">Cancel</button>
+        </div>
+      </div>
+      `;
+
+      const submitListButton = document.getElementById('submitListButton');
+      submitListButton.addEventListener('click', () => {
+        const newList = this.createTodoList();
+        this.storage.storeList(newList);
+      });
+    });
+  }
+
+  //static displayTodoContent() {
+  displayTodoContent() {
+    UI.clearTasksSection();
+    const lists = document.getElementById('lists');
+    this.storage.getLists().forEach((list) => {
+      const listDiv = document.createElement('div');
+      listDiv.textContent = list.getName();
+      listDiv.classList.add('list');
+      lists.appendChild(listDiv);
+    })
+  }
   // Should just loop through some storage and show 
   // like: storage.forEach(todoList, displayTodoContent(todoList))
-  static displayTodoContent(todoList) {
+  /*static displayTodoContent(todoList) {
     UI.clearTasksSection();
     const lists = document.getElementById('listTasks');
 
@@ -63,44 +112,12 @@ export default class UI {
       btn.addEventListener('click', () => {
         console.log('remove');
         btn.parentElement.parentElement.remove(); // WORKS!
+        todoList.deleteTask(todoList.getName()); // This needs to happen on storage level
       });
     });
   }
-
-  static addListButton() {
-    const addListBtn = document.getElementById('addListButton');
-    addListBtn.addEventListener('click', () => {
-      this.clearTasksSection();
-      const lists = document.getElementById('lists');
-      /** Most Likely not necessary
-      while (lists.firstChild) {
-        lists.removeChild(lists.firstChild);
-      }
-      */
-
-      lists.innerHTML = `
-      <div id="newList">
-        <input type="textfield" id="title" name="title" placeholder="TITLE">
-        <input type="textfield" id="description" name="description" placeholder="DESCRIPTION">
-        <select id="priority" name="priority">
-          <option value="" disabled selected>PRIORITY</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-        <div class="buttons">
-          <button class="submit-list-button" id="submitListButton">Add List</button>
-          <button class="cancel-list-button" id="cancelListButton">Cancel</button>
-        </div>
-      </div>
-      `;
-
-      const submitListButton = document.getElementById('submitListButton');
-      submitListButton.addEventListener('click', () => {
-        //this.storage.printStorage();
-      });
-    });
-  }
+  */
+  
 
   static clearTasksSection() {
     const lists = document.getElementById('listTasks');
@@ -110,7 +127,7 @@ export default class UI {
   }
 
   /* 'Showcase Todo List' -> The list that's included when user loads the page */
-  static loadShowCase() {
+  createExamples() {
     const lists = document.getElementById('lists');
     const todoList = new TodoList('Shopping (Example)');
     const task1 = new Task('Avocados', 'I really need them!', 'High', 'none');
@@ -129,12 +146,11 @@ export default class UI {
     todoList2.addTask(tasks1);
     todoList2.addTask(tasks2);
 
-    lists.appendChild(UI.createTodoList(todoList));
-    lists.appendChild(UI.createTodoList(todoList2));
+    // lists.appendChild(UI.createTodoList(todoList));
+    // lists.appendChild(UI.createTodoList(todoList2));
 
-    let storage = new Storage();
-    storage.storeList(todoList);
-    storage.storeList(todoList2);
-    storage.printStorage();
+    this.storage.storeList(todoList);
+    this.storage.storeList(todoList2);
+    this.storage.printStorage();
   }
 }

@@ -1,4 +1,8 @@
 import './styles.css'
 import UI from './modules/ui'
 
-document.addEventListener('DOMContentLoaded', UI.loadHomepage)
+document.addEventListener('DOMContentLoaded', () => {
+  //const ui = new UI();
+  //ui.load();
+  new UI().load();
+})

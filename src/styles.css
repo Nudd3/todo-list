@@ -144,6 +144,10 @@ body {
   justify-content: center;
 }
 
+.delete:hover {
+  cursor: pointer;
+}
+
 
 /* Add new list menu */
 #newList {
