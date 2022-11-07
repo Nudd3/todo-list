@@ -23,3 +23,13 @@ export default class Storage {
     });
   }
 }
+
+/*
+  UI
+  * Create Lists by reading from
+    * Store them in storage
+    * Add event listener to show tasks
+  * Display Lists
+    * Load them from storage
+      * Load one list at a time from storage
+*/

@@ -155,36 +155,20 @@ body {
   flex-direction: column;
 }
 
-input[name=title] {
+input[name=listTitle] {
   font-size: 15px;
   padding: 5px 0 5px 15px;
   border: none;
 }
-input[name=title]:active {
+input[name=listTitle]:active {
   border: none;
   appearance: none;
 }
 
-input[name=title]:focus {
+input[name=listTitle]:focus {
   border: none;
   appearance: none;
   outline: none;
-}
-
-input[name=description]{
-  font-size: 15px;
-  border: none;
-  padding: 25px 0 25px 15px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-select{
-  appearance: none;
-  padding: 5px 0 5px 15px;
-  font-size: 15px;
-  border:none;
-  color: rgb(160, 160, 160);
 }
 
 .buttons {

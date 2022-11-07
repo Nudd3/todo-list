@@ -11,10 +11,6 @@ export default class Task {
     return this.title;
   }
 
-  setTitle(name){
-    this.name = name;
-  }
-
   getDescription(){
     return this.description;
   }
@@ -29,9 +25,5 @@ export default class Task {
 
   setComplete(){
     this.complete = true;
-  }
-
-  testFunction(){
-    console.log('Hello from a task with name' + this.name);
   }
 }

@@ -6,3 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   //ui.load();
   new UI().load();
 })
+/*
+listTitle
+description
+priority
+dueDate
+*/
