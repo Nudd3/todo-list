@@ -3,17 +3,12 @@ import TodoList from './todo-list';
 import Storage from './storage.js';
 export default class UI {
 
-  // Display Lists
-  // Add Lists
-  // Remove Lists
-  // Display Tasks
-  // Remove Tasks
   load() {
     this.storage = new Storage();
     this.createExamples();
-    //UI.addListButton();
     this.displayTodoLists();
-    this.addListButton();
+    //this.addListButton();
+    this.initializeAddButtons();
   }
 
   //static createTodoList() {
@@ -44,6 +39,7 @@ export default class UI {
       listDiv.classList.add('list');
       listDiv.addEventListener('click', () => {
         this.displayListTasks(list);
+        //listDiv.classList.add('taken');
       });
       lists.appendChild(listDiv);
     });
@@ -53,7 +49,8 @@ export default class UI {
   displayListTasks(todoList) {
     this.clearTasksSection();
     const listTasks = document.getElementById('listTasks');
-
+    const addTaskButton = document.getElementById('addTaskButton');
+    addTaskButton.classList.add('show');
     todoList.getTasks().forEach((task) => {
       const taskDiv = document.createElement('div');
       taskDiv.classList.add('task');
@@ -79,7 +76,7 @@ export default class UI {
 
       lists.innerHTML = `
       <div id="newList">
-        <input type="textfield" id="listTitle" name="listTitle" placeholder="TITLE">
+        <input type="textfield" id="listTitle" name="listTitle" required placeholder="TITLE">
         <div class="buttons">
           <button class="submit-list-button" id="submitListButton">Add List</button>
           <button class="cancel-list-button" id="cancelListButton">Cancel</button>
@@ -96,6 +93,7 @@ export default class UI {
       });
       const cancelListButton = document.getElementById('cancelListButton');
       cancelListButton.addEventListener('click', () => {
+        lists.innerHTML = '';
         this.displayTodoLists();
       })
     });
@@ -130,5 +128,22 @@ export default class UI {
     this.storage.storeList(todoList);
     this.storage.storeList(todoList2);
     this.storage.printStorage();
+  }
+
+  addTaskButton() {
+    const addTaskButton = document.getElementById('addTaskButton');
+    addTaskButton.addEventListener('click', () => {
+      this.displayAddTask();
+    })
+  }
+
+  displayAddTask() {
+    const modalContainer = document.getElementById('modalContainer')
+    modalContainer.classList.add('showModal');
+  }
+
+  initializeAddButtons() {
+    this.addListButton();
+    this.addTaskButton();
   }
 }
