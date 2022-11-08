@@ -7,20 +7,13 @@ export default class UI {
     this.storage = new Storage();
     this.createExamples();
     this.displayTodoLists();
-    //this.addListButton();
     this.initializeAddButtons();
   }
 
-  //static createTodoList() {
   createTodoList() {
-    // Get the values from the input fields
-    // Then create a todo from it
-    // lastly, add it to the storage.
     const todoListDiv = document.createElement('div');
     todoListDiv.classList.add('list');
 
-    /* create the list below*/ 
-    // 1. get values from page
     const listTitle = document.getElementById('listTitle').value;
 
     const newTodoList = new TodoList(listTitle);
@@ -39,7 +32,6 @@ export default class UI {
       listDiv.classList.add('list');
       listDiv.addEventListener('click', () => {
         this.displayListTasks(list);
-        //listDiv.classList.add('taken');
       });
       lists.appendChild(listDiv);
     });
@@ -73,13 +65,14 @@ export default class UI {
     addListBtn.addEventListener('click', () => {
       this.clearTasksSection();
       const lists = document.getElementById('lists');
-
+      const addTaskButton = document.getElementById('addTaskButton');
+      addTaskButton.classList.remove('show');
       lists.innerHTML = `
       <div id="newList">
         <input type="textfield" id="listTitle" name="listTitle" required placeholder="TITLE">
         <div class="buttons">
-          <button class="submit-list-button" id="submitListButton">Add List</button>
-          <button class="cancel-list-button" id="cancelListButton">Cancel</button>
+          <button class="add-btn" id="submitListButton">Add List</button>
+          <button class="cancel-btn" id="cancelListButton">Cancel</button>
         </div>
       </div>
       `;
