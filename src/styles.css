@@ -74,6 +74,8 @@ body {
   margin-right: 15px;
 }
 
+
+
 #addTaskButton {
   display: none;
 }
@@ -84,7 +86,9 @@ body {
 #addListButton:hover,
 #addTaskButton:hover {
   cursor:pointer;
-  background-color: #8aea92;
+  /*background-color: #8aea92;*/
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -102,10 +106,11 @@ body {
 
 .list {
   padding: 10px 15px;
-  background-color: #BDC2BF;
+  background-color: #d4dbd7;
   border-bottom: 2px solid #9a9f9c;
   font-size: 1.2rem;
   font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .list:last-child {
@@ -113,7 +118,7 @@ body {
 }
 
 .list:hover {
-  background-color: #9f9f9f;
+  background-color: #bdbdbd;
 }
 
 /* Main Content (Right Side) */
@@ -145,6 +150,7 @@ body {
 
 .task:hover {
   background-color: #d1d1d1;
+  
 }
 
 .task-title {
@@ -193,8 +199,24 @@ input[name=listTitle]:focus {
 
 .add-btn,
 .cancel-btn {
+  border: none;
+  border-radius: 8px;
   margin-top: 15px;
   padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.add-btn {
+  background-color: rgb(103, 183, 103);
+}
+
+.cancel-btn {
+  background-color: rgb(193, 112, 112);
+}
+
+.add-btn:hover,
+.cancel-btn:hover {
+  transform: scale(1.1);
 }
 
 .modal-container {

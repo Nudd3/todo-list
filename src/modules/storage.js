@@ -12,6 +12,10 @@ export default class Storage {
     
   }
 
+  getList(listName) {
+    return this.storage.map(list, list.getName() === listName);
+  }
+
   getLists() {
     return this.storage;
   }
