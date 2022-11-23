@@ -1,15 +1,15 @@
 export default class TodoList {
-  constructor(name) {
-    this.name = name;
+  constructor(title) {
+    this.title = title;
     this.tasks = [];
   }
 
-  getName() {
-    return this.name;
+  getTitle() {
+    return this.title;
   }
 
-  setName(value){
-    this.name = value;
+  setTitle(value){
+    this.title = value;
   }
 
   getTasks() {
@@ -24,8 +24,8 @@ export default class TodoList {
     this.tasks.push(newTask);
   }
 
-  deleteTask(taskName) {
-    this.tasks = this.tasks.filter((task) => task.name !== taskName);
+  deleteTask(taskTitle) {
+    this.tasks = this.tasks.filter((task) => task.title !== taskTitle);
   }
 
   nrOfTasks(){

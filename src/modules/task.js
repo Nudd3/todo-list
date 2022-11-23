@@ -23,6 +23,13 @@ export default class Task {
     return this.dueDate;
   }
 
+  getCompleted(){
+
+  }
+
+  toggleCompleted() {
+    this.complete = this.complete === false ? true : false;
+  }
   setComplete(){
     this.complete = true;
   }

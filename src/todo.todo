@@ -1,0 +1,24 @@
+# TodoList class
+  [x] title (string)
+  [x] tasks (array)
+  [x] getters
+  [x] delete task function
+  [x] add task function
+
+# Task class
+  [x] title (string)
+  [x] description (string)
+  [x] priority (string)
+  [x] completed (boolean)
+  [x] dueDate (date)
+  [x] getters
+  [x] toggle completed
+
+# Dom Manager
+  [] Display lists
+  [] Display tasks
+  [] Add lists
+  [] Add tasks to list
+
+# Storage
+  [] Use LocalStorage

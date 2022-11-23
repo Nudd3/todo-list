@@ -54,6 +54,10 @@ body {
   min-width: 250px;
 }
 
+.section-title {
+  padding: 10px 0 10px 10px;
+}
+
 .add-list-section,
 .add-task-section {
   height: 40px;
@@ -90,10 +94,6 @@ body {
   transform: scale(1.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-}
-
-.section-title {
-  padding: 10px 0 10px 10px;
 }
 
 .lists {

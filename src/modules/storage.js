@@ -1,39 +1,12 @@
+import TodoList from "./todo-list";
+
 export default class Storage {
-  // THIS IS WHERE I WILL STORE ALL THE LISTS!
-  constructor() {
-    this.storage = [];
+
+  static save(data) {
+    localStorage.setItem('todoList', JSON.stringify(data));
   }
 
-  storeList(todoList) {
-    this.storage.push(todoList)
-  }
+  static loadLists() {
 
-  deleteList(todoList) {
-    
-  }
-
-  getList(listName) {
-    return this.storage.map(list, list.getName() === listName);
-  }
-
-  getLists() {
-    return this.storage;
-  }
-
-  // testing purposes
-  printStorage() {
-    this.storage.forEach(element => {
-      console.log(element);
-    });
   }
 }
-
-/*
-  UI
-  * Create Lists by reading from
-    * Store them in storage
-    * Add event listener to show tasks
-  * Display Lists
-    * Load them from storage
-      * Load one list at a time from storage
-*/
