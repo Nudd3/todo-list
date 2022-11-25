@@ -40,6 +40,10 @@ body {
   font-weight: bold;
 }
 
+#title {
+  font-size: 3rem;
+}
+
 /* NAV (LEFT SIDE) main, nav, section-title, add-list, new-list-section, addListButton, lists*/
 .main {
   display: grid;
