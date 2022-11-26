@@ -56,12 +56,14 @@ export default class DomManager {
   // Handlers
   static handleListListeners(list, listDiv) {
     // when a listDiv is pressed
+    // - currently shown tasks should be removed
     // - its tasks should be shown
     // - the addNewTask btn should be shown
     // show add task button
     const taskSection = document.getElementById('listTasks');
+    
     listDiv.addEventListener('click', () => {
-
+      taskSection.innerHTML = '';
 
       // Display tasks
       list.getTasks().forEach(task => {
@@ -74,6 +76,16 @@ export default class DomManager {
       // Display the add task button
       const addTaskButton = document.getElementById('addTaskButton');
       addTaskButton.classList.add('show');
+      addTaskButton.addEventListener('click', () => {
+        const newTaskModal = document.getElementById('modalContainer');
+        newTaskModal.classList.add('showModal');
+        // display add task modal
+          // get data from page modal
+          // create a new task
+          // add to todoList
+          // display to page
+        console.log('hello oo');
+      });
 
     });
   }
