@@ -42,14 +42,17 @@
       <div class="modal-container" id="modalContainer">
         <div class="modal">
           <h1 id="newTaskTitle">New Task</h1>
-          <input type="text" name="taskName" id="taskName" placeholder="Title">
+          <input type="text" name="taskTitle" id="taskTitle" placeholder="Title">
           <input type="text" name="taskDescription" id="taskDescription" placeholder="Description">
           <input type="text" name="taskDueDate" id="taskDueDate" placeholder="Due date" onfocus="(this.type='date')">
-          <select>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
+          <div class="select">
+            <select id="taskPriority">
+              <option selected disabled>Priority</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
           <div class="buttons">
             <button class="add-btn" id="submitNewTaskButton">Add Task</button>
             <button class="cancel-btn" id="cancelNewTaskButton">Cancel</button>
@@ -58,10 +61,6 @@
       </div>
     </div>
   </main>
-  <footer>
-
-  </footer>
-
 </body>
 
 </html>
